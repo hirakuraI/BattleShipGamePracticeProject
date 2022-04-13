@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -5,7 +6,11 @@ public class Main {
         BattleShipGameLogic theBattleShip = new BattleShipGameLogic();
 
         int randomNum = (int) (Math.random() * 5);
-        int[] locations = {randomNum, randomNum+1, randomNum+2};
+        int[] locationInNums = {randomNum, randomNum+1, randomNum+2};
+        ArrayList<String> locations = new ArrayList<>();
+        for (int i : locationInNums){
+            locations.add(String.valueOf(i));
+        }
         theBattleShip.setLocationCells(locations);
 
         int numOfGuesses = 0;

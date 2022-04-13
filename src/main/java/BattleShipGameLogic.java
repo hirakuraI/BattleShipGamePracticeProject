@@ -1,27 +1,26 @@
+import java.util.ArrayList;
+
 public class BattleShipGameLogic {
 
-    int[] locationCells;
+    private ArrayList<String>  locationCells;
     int numOfHits = 0;
 
-    public void setLocationCells(int[] loc){
+    public void setLocationCells(ArrayList<String> loc){
         locationCells = loc;
     }
 
     public String checkUserGuess(String userGuess) {
 
-        int guess = Integer.parseInt(userGuess);
         String result = "Miss";
+        int index = locationCells.indexOf(userGuess);
+        if (index >= 0){
+         locationCells.remove(index);
 
-        for (int cell : locationCells) {
-            if (guess == cell) {
-                result = "Hit";
-                numOfHits++;
-                break;
-            }
-        }
-
-        if (numOfHits == locationCells.length) {
-            result = "Dead";
+         if(locationCells.isEmpty()){
+             result = "Dead";
+         } else {
+             result = "Hit";
+         }
         }
 
         System.out.println(result);
